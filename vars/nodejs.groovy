@@ -20,7 +20,12 @@ def call() {
                     }
                 }
             }
-            
+            stage('Sonar Checks') {
+                steps{
+                    sh "env"
+                    sh "sonar-scanner -Dsonar.host.url=http://${SONAR_URL}:9000/ -Dsonar.sources=. -Dsonar.projectKey=${COMPONENT} -Dsonar.login={SONAR_CRED_USR} -Dsonar.password={SONAR_CRED_PSW}"
+                }
+            }
             stage('Generating Artifacts') {
                 steps {
                     sh "echo Generating Artifacts...."
@@ -29,12 +34,7 @@ def call() {
                     }
                 }
 
-            stage('Sonar Checks') {
-                steps{
-                    sh "env"
-                    sh "sonar-scanner -Dsonar.host.url=http://${SONAR_URL}:9000/ -Dsonar.sources=. -Dsonar.projectKey=${COMPONENT} -Dsonar.login={SONAR_CRED_USR} -Dsonar.password={SONAR_CRED_PSW}"
-                }
-            }
+
             }
         }
     }
