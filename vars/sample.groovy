@@ -1,5 +1,5 @@
 //Declaring a function
-def info(meesage) {
+def info(message) {
     echo "INFO from Trainer is $message"
 }
 
