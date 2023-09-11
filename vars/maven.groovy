@@ -16,10 +16,10 @@ def call() {
                 }
             }
             
-            stage('Generating Artifacts') {
+            stage('Code Compile') {
                 steps {
                     sh "echo Generating Artifacts for $COMPONENT"
-                    sh "mvn clean package"
+                    sh "mvn clean compile"
 
                     }
                 }
