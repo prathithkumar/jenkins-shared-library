@@ -4,3 +4,7 @@ def info(message) {
 }
 
 info("HELLO")
+
+call() {
+    echo calling deff functions
+}
