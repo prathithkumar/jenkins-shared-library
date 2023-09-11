@@ -4,5 +4,4 @@ def info() {
 }
 
 // calling a function
-
-info ()
+info()
