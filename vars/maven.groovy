@@ -28,7 +28,29 @@ def call() {
                             common.sonarChecks()
                         }
                     }
-                }     
+                } 
+            stage('Test cases') {
+                parallel {
+                    stage('Unit Testing') {
+                        steps {
+                            sh "echo starting Unit Testing"
+                            sh "echo Unit Testing Completed"
+                        }
+                    }
+                    stage('Integration Testing') {
+                        steps {
+                            sh "echo starting Integration Testing"
+                            sh "echo Integration Testing Completed"
+                        }
+                    }
+                    stage('Functional  Testing') {
+                        steps {
+                            sh "echo starting Functional Testing"
+                            sh "echo Functional Testing Completed"
+                        }    
+                    }
+                }
+            }                     
             stage('Generating Artifacts') {
                 steps {
                     sh "echo artifacts Generation Completed"
