@@ -31,8 +31,9 @@ def call() {
                     script {
                             env.ARGS= "-Dsonar.java.binaries=target/"
                             common.sonarChecks()
+                        }
                     }
-                } 
+                }     
             stage('Generating Artifacts') {
                 steps {
                     sh "echo artifacts Generation Completed"
@@ -41,4 +42,3 @@ def call() {
             } 
         }
     }
-}
