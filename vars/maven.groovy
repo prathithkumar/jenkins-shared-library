@@ -30,8 +30,8 @@ def call() {
             stage('Sonar Checks') {
                 steps {
                     script {
-                        ARGS="-Dsonar.java.binaries=target/"
-                        common.sonarChecks()
+                            env.ARGS="-Dsonar.java.binaries=target/"
+                            common.sonarChecks()
                     }
                 } 
             stage('Generating Artifacts') {
@@ -42,3 +42,4 @@ def call() {
             } 
         }
     }
+}
