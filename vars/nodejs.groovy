@@ -31,10 +31,10 @@ def call() {
                     sh "echo Generating Artifacts...."
                     sh "npm install && ls -ltr"
 
-                    }
                 }
-
-
             }
+
+
         }
     }
+}
