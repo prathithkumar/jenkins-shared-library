@@ -55,6 +55,7 @@ def call() {
                     sh "echo artifacts Generation Completed"
                 }
             }
+
         }
     }
 }
