@@ -1,3 +1,8 @@
+def lintChecks() {
+        sh "echo starting lintChecks for ${COMPONENT}"
+        sh "mvn checkstyle:check || true"
+        sh "echo lintChecks completed for ${COMPONENT}"
+}
 
 def call() {
     pipeline {
