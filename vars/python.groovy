@@ -3,6 +3,7 @@ def lintChecks() {
             sh "pylint *.py || true"
             sh "echo lintChecks completed for ${COMPONENT}"
 }
+
 def call() {
     pipeline {
         agent any 
