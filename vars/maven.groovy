@@ -19,7 +19,6 @@ def call() {
                     }
                 }
             }
-            
             stage('Code Compile') {
                 steps {
                     sh "echo Generating Artifacts for $COMPONENT"
@@ -30,7 +29,7 @@ def call() {
             stage('Sonar Checks') {
                 steps {
                     script {
-                            ARGS= "-Dsonar.java.binaries=target/"
+                            env.ARGS= "-Dsonar.java.binaries=target/"
                             common.sonarChecks()
                     }
                 } 
