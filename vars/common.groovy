@@ -58,3 +58,26 @@ def testCases() {
 
 
 
+                       env.UPLOAD_STATUS=sh(returnStdout: true, script: "curl -L -s http://${NEXUS_URL}:8081/service/rest/repository/browse/${COMPONENT} | grep ${COMPONENT}-${TAG_NAME}.zip || true")
+                     
+
+def artifacts() {
+    stage('Checking the Artifacts Release') {
+        env.env.UPLOAD_STATUS=sh(returnStdout: true, script: "curl -L -s http://${NEXUS_URL}:8081/service/rest/repository/browse/${COMPONENT} | grep ${COMPONENT}-${TAG_NAME}.zip || true")
+        print UPLOAD_STATUS
+    }
+    if(env.UPLOAD_STATUS == "") {
+        stage('Genearting the Artifacts') {
+            if(env.APPTYPE == "nodejs") {
+               sh "echo Generating Artifacts...."
+               sh "npm install"
+               sh "zip ${COMPONENT}-${TAG_NAME}.zip node_modules server.js"
+            }
+            else if(env.APPTYPE == "maven") {
+               sh "echo Generating Artifacts...."
+               sh "mvn clean package"
+               sh "zip ${COMPONENT}-${TAG_NAME}.zip node_modules server.js"
+            }
+        }
+    }
+}
