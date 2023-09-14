@@ -8,7 +8,7 @@ def lintChecks() {
 
 def call() {
     node {
-        common.lintChecks
+        common.lintChecks()
     }
 }
 
