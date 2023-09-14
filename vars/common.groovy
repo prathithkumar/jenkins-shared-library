@@ -29,7 +29,7 @@ def lintChecks() {
         sh "echo lintChecks completed for ${COMPONENT}"
         }
         else {
-            sh "Lint Checks for frontend are in progress"
+            sh "echo Lint Checks for frontend are in progress"
         }
     }    
 }
@@ -92,8 +92,8 @@ def artifacts() {
                 sh "zip -r ../${COMPONENT}-${TAG_NAME}.zip *"
             }    
         } 
-    stage('Uploading the artifacts') {
-       withCredentials([usernamePassword(credentialsId: 'NEXUS_CRED', passwordVariable: 'NEXUS_PSW', usernameVariable: 'NEXUS_USR')]) {
+        stage('Uploading the artifacts') {
+            withCredentials([usernamePassword(credentialsId: 'NEXUS_CRED', passwordVariable: 'NEXUS_PSW', usernameVariable: 'NEXUS_USR')]) {
                 sh  "echo Uploading ${COMPONENT} artifact to nexus"
                 sh  "curl -v -u ${NEXUS_USR}:${NEXUS_PSW} --upload-file ${COMPONENT}-${TAG_NAME}.zip http://172.31.18.210:8081/repository/${COMPONENT}/${COMPONENT}-${TAG_NAME}.zip"
                 sh  "echo Uploading ${COMPONENT} artifact to nexus is completed"
