@@ -5,6 +5,14 @@ def lintChecks() {
             sh "node_modules/jslint/bin/jslint.js server.js || true"
             sh "echo lintChecks completed for ${COMPONENT}"
 }
+
+def call() {
+    node {
+        common.lintChecks
+    }
+}
+
+/* Declarative Pipeline
 def call() {
     pipeline {
         agent any 
