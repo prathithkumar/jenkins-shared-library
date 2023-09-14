@@ -4,6 +4,10 @@ def lintChecks() {
         sh "echo lintChecks completed for ${COMPONENT}"
 }
 
+        common.lintChecks()
+        common.sonarChecks()
+
+/*
 def call() {
     pipeline {
         agent any 
