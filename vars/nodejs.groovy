@@ -2,6 +2,7 @@ def call() {
     node {
         common.lintChecks()
         env.ARGS="-Dsonar.sources=."
+        env.NEXUS_URL   = "172.31.18.210"
         common.sonarChecks()
         common.testCases()
         common.artifacts()
